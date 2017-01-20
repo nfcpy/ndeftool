@@ -1,0 +1,12 @@
+[run]
+branch = True
+source = ndeftool
+
+[paths]
+source =
+   src/ndeftool
+   .tox/*/lib/python*/site-packages/ndeftool
+   .tox/pypy/site-packages/ndeftool
+
+[report]
+show_missing = True
