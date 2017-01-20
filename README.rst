@@ -2,6 +2,10 @@
 Create, modify and print NDEF Records
 =====================================
 
+.. image:: https://badge.fury.io/py/ndeftool.svg
+   :target: https://pypi.python.org/pypi/ndeftool
+   :alt: Python Package
+
 .. image:: https://readthedocs.org/projects/ndeftool/badge/?version=latest
    :target: http://ndeftool.readthedocs.io/en/latest/?badge=latest
    :alt: Latest Documentation
