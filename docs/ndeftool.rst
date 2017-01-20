@@ -13,8 +13,8 @@ Synopsis
 
    ndeftool [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...
 
-Descrription
-------------
+Description
+-----------
 
 The **ndeftool** provides a number of commands to create, modify or print NDEF
 records. Commands can be chained together to successively extend or modify the

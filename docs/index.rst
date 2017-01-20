@@ -12,20 +12,10 @@ The **ndeftool** is a command line utility for creating, modifying and printing
 NFC Data Exchange Format (NDEF) Records. It is licensed under the `ISCL`_,
 hosted on `GitHub`_ and installable from `PyPI`_.
 
-Installation
-------------
-
 .. code::
 
-   pip install -U ndeftool
-
-Usage
------
-
-.. code::
-
-   Usage: ndeftool [OPTIONS] COMMAND1 [ARGS]... [COMMAND2 [ARGS]...]...
-
+   $ pip install ndeftool
+   $ ndeftool --help
 
 .. toctree::
    :maxdepth: 2
