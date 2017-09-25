@@ -17,7 +17,7 @@ Synopsis
 Description
 -----------
 
-The **uri** command creates an NFC Forum URI Record wit the given resource
+The **uri** command creates an NFC Forum URI Record with the given resource
 identifier. Note that this is actually an Internationalized Resource Identifier
 (IRI).
 
