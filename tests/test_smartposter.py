@@ -42,14 +42,14 @@ def test_smartposter_with_no_options(runner):
     params = 'smartposter http://nfcpy.org'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd1\x02\x0eSp\xd1\x01\nU\x03nfcpy.org'
+    assert result.stdout_bytes == b'\xd1\x02\x0eSp\xd1\x01\nU\x03nfcpy.org'
 
 
 def test_two_smartposter_commands(runner):
     params = 'smartposter http://nfcpy.org smartposter tel:12'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == \
+    assert result.stdout_bytes == \
         b'\x91\x02\x0eSp\xd1\x01\nU\x03nfcpy.orgQ\x02\x07Sp\xd1\x01\x03U\x0512'
 
 
@@ -57,7 +57,7 @@ def test_smartposter_with_english_title(runner):
     params = 'smartposter -T Title http://nfcpy.org'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == \
+    assert result.stdout_bytes == \
         b'\xd1\x02\x1aSp\x91\x01\nU\x03nfcpy.orgQ\x01\x08T\x02enTitle'
 
 
@@ -65,7 +65,7 @@ def test_smartposter_with_german_title(runner):
     params = 'smartposter -t de Titel http://nfcpy.org'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == \
+    assert result.stdout_bytes == \
         b'\xd1\x02\x1aSp\x91\x01\nU\x03nfcpy.orgQ\x01\x08T\x02deTitel'
 
 
@@ -73,7 +73,7 @@ def test_smartposter_with_two_titles(runner):
     params = 'smartposter -T Title -t de Titel http://nfcpy.org'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == \
+    assert result.stdout_bytes == \
         b'\xd1\x02&Sp\x91\x01\nU\x03nfcpy.org' \
         b'\x11\x01\x08T\x02deTitelQ\x01\x08T\x02enTitle'
 
@@ -82,7 +82,7 @@ def test_smartposter_with_action_exec(runner):
     params = 'smartposter -a exec http://nfcpy.org'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == \
+    assert result.stdout_bytes == \
         b'\xd1\x02\x15Sp\x91\x01\nU\x03nfcpy.orgQ\x03\x01act\x00'
 
 
@@ -95,7 +95,7 @@ def test_smartposter_with_png_icon(isolated_runner):
     params = 'smartposter -i 1x1.png http://nfcpy.org'.split()
     result = isolated_runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == (
+    assert result.stdout_bytes == (
         b'\xd1\x02_Sp\x91\x01\nU\x03nfcpy.orgR\tEimage/png\x89PNG\r\n\x1a\n'
         b'\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x02\x00\x00'
         b'\x00\x90wS\xde\x00\x00\x00\x0cIDAT\x08\xd7c\xf8\xff\xff?\x00\x05'

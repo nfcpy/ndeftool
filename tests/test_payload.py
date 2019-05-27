@@ -41,14 +41,14 @@ def test_payload_as_first_command(runner):
     params = 'payload helloworld'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd5\x00\nhelloworld'
+    assert result.stdout_bytes == b'\xd5\x00\nhelloworld'
 
 
 def test_payload_as_second_command(runner):
     params = 'typename text/plain payload helloworld'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd2\n\ntext/plainhelloworld'
+    assert result.stdout_bytes == b'\xd2\n\ntext/plainhelloworld'
 
 
 def test_payload_makes_decode_error(runner):
@@ -62,4 +62,4 @@ def test_payload_error_not_checked(runner):
     params = '--silent load - payload --no-check helloworld'.split()
     result = runner.invoke(main, params, input=b'\xd1\x01\x03T\x02en')
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd1\x01\nThelloworld'
+    assert result.stdout_bytes == b'\xd1\x01\nThelloworld'

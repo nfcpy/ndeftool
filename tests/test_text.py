@@ -41,25 +41,25 @@ def test_one_text_record_created(runner):
     params = 'text one'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd1\x01\x06T\x02enone'
+    assert result.stdout_bytes == b'\xd1\x01\x06T\x02enone'
 
 
 def test_two_text_records_created(runner):
     params = 'text one text two'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\x91\x01\x06T\x02enoneQ\x01\x06T\x02entwo'
+    assert result.stdout_bytes == b'\x91\x01\x06T\x02enoneQ\x01\x06T\x02entwo'
 
 
 def test_default_text_language(runner):
     params = 'text English'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd1\x01\nT\x02enEnglish'
+    assert result.stdout_bytes == b'\xd1\x01\nT\x02enEnglish'
 
 
 def test_specific_text_language(runner):
     params = 'text --language de German'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd1\x01\tT\x02deGerman'
+    assert result.stdout_bytes == b'\xd1\x01\tT\x02deGerman'

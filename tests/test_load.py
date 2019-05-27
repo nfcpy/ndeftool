@@ -41,21 +41,21 @@ def test_debug_option_prints_kwargs(runner):
 def test_pack_from_standard_input(runner):
     result = runner.invoke(main, ['load', '--pack', '-'], input=b"Hello World")
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xda\n\x0b\x07text/plain<stdin>Hello World'
+    assert result.stdout_bytes == b'\xda\n\x0b\x07text/plain<stdin>Hello World'
 
 
 def test_pack_from_full_file_path(isolated_runner):
     open('hello.txt', 'w').write('Hello World')
     result = isolated_runner.invoke(main, ['load', '--pack', 'hello.txt'])
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xda\n\x0b\ttext/plainhello.txtHello World'
+    assert result.stdout_bytes == b'\xda\n\x0b\ttext/plainhello.txtHello World'
 
 
 def test_pack_from_glob_file_path(isolated_runner):
     open('hello.txt', 'w').write('Hello World')
     result = isolated_runner.invoke(main, ['load', '--pack', '*.txt'])
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xda\n\x0b\ttext/plainhello.txtHello World'
+    assert result.stdout_bytes == b'\xda\n\x0b\ttext/plainhello.txtHello World'
 
 
 def test_pack_glob_multiple_files(isolated_runner):
@@ -63,7 +63,7 @@ def test_pack_glob_multiple_files(isolated_runner):
     open('hello2.txt', 'w').write('World Hello')
     result = isolated_runner.invoke(main, ['load', '--pack', 'hello?.txt'])
     assert result.exit_code == 0
-    assert result.output_bytes == \
+    assert result.stdout_bytes == \
         b'\x9a\n\x0b\ntext/plainhello1.txtHello World' \
         b'Z\n\x0b\ntext/plainhello2.txtWorld Hello'
 
@@ -74,7 +74,7 @@ def test_pack_pipe_multiple_files(isolated_runner):
     command = 'load --pack hello1.txt load --pack hello2.txt'
     result = isolated_runner.invoke(main, command.split())
     assert result.exit_code == 0
-    assert result.output_bytes == \
+    assert result.stdout_bytes == \
         b'\x9a\n\x0b\ntext/plainhello1.txtHello World' \
         b'Z\n\x0b\ntext/plainhello2.txtWorld Hello'
 
@@ -84,7 +84,7 @@ def test_load_from_standard_input(runner):
     params = '--silent load -'
     result = runner.invoke(main, params.split(), input=octets)
     assert result.exit_code == 0
-    assert result.output_bytes == octets
+    assert result.stdout_bytes == octets
 
 
 def test_load_from_full_file_path(isolated_runner):
@@ -93,7 +93,7 @@ def test_load_from_full_file_path(isolated_runner):
     params = '--silent load hello.txt.ndef'
     result = isolated_runner.invoke(main, params.split())
     assert result.exit_code == 0
-    assert result.output_bytes == octets
+    assert result.stdout_bytes == octets
 
 
 def test_load_from_glob_file_path(isolated_runner):
@@ -102,7 +102,7 @@ def test_load_from_glob_file_path(isolated_runner):
     params = '--silent load *.ndef'
     result = isolated_runner.invoke(main, params.split())
     assert result.exit_code == 0
-    assert result.output_bytes == octets
+    assert result.stdout_bytes == octets
 
 
 def test_pack_load_multiple_files(isolated_runner):
@@ -113,7 +113,7 @@ def test_pack_load_multiple_files(isolated_runner):
     params = '--silent load hello?.txt.ndef'
     result = isolated_runner.invoke(main, params.split())
     assert result.exit_code == 0
-    assert result.output_bytes == b'\x9a' + octets1[1:] + b'\x5a' + octets2[1:]
+    assert result.stdout_bytes == b'\x9a' + octets1[1:] + b'\x5a' + octets2[1:]
 
 
 def test_load_pipe_multiple_files(isolated_runner):
@@ -124,7 +124,7 @@ def test_load_pipe_multiple_files(isolated_runner):
     params = '--silent load hello1.txt.ndef load hello2.txt.ndef'
     result = isolated_runner.invoke(main, params.split())
     assert result.exit_code == 0
-    assert result.output_bytes == b'\x9a' + octets1[1:] + b'\x5a' + octets2[1:]
+    assert result.stdout_bytes == b'\x9a' + octets1[1:] + b'\x5a' + octets2[1:]
 
 
 def test_load_strict_then_relax(isolated_runner):
@@ -138,7 +138,7 @@ def test_load_strict_then_relax(isolated_runner):
     params = '--relax ' + params
     result = isolated_runner.invoke(main, params.split())
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xda' + octets[1:]
+    assert result.stdout_bytes == b'\xda' + octets[1:]
 
 
 def test_load_relax_then_ignore(isolated_runner):
@@ -154,7 +154,7 @@ def test_load_relax_then_ignore(isolated_runner):
     params = '--ignore --silent load hello1.txt.ndef load hello2.txt.ndef'
     result = isolated_runner.invoke(main, params.split())
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xda' + octets2[1:]
+    assert result.stdout_bytes == b'\xda' + octets2[1:]
 
 
 def test_no_files_selected_by_path(isolated_runner):

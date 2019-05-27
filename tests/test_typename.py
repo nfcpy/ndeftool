@@ -41,14 +41,14 @@ def test_typename_as_first_command(runner):
     params = 'typename text/plain'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd2\n\x00text/plain'
+    assert result.stdout_bytes == b'\xd2\n\x00text/plain'
 
 
 def test_typename_as_second_command(runner):
     params = 'identifier name typename text/plain'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xda\n\x00\x04text/plainname'
+    assert result.stdout_bytes == b'\xda\n\x00\x04text/plainname'
 
 
 def test_invalid_type_raises_error(runner):
@@ -69,4 +69,4 @@ def test_payload_type_error_not_checked(runner):
     params = 'payload helloworld typename --no-check urn:nfc:wkt:T'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd1\x01\nThelloworld'
+    assert result.stdout_bytes == b'\xd1\x01\nThelloworld'

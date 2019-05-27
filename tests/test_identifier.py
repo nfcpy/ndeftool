@@ -41,14 +41,14 @@ def test_identifier_as_first_command(runner):
     params = 'identifier name'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xdd\x00\x00\x04name'
+    assert result.stdout_bytes == b'\xdd\x00\x00\x04name'
 
 
 def test_identifier_as_second_command(runner):
     params = 'typename text/plain identifier name'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xda\n\x00\x04text/plainname'
+    assert result.stdout_bytes == b'\xda\n\x00\x04text/plainname'
 
 
 def test_very_long_name_raises_error(runner):

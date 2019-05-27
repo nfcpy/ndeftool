@@ -35,11 +35,11 @@ def test_one_uri_record_created(runner):
     params = 'uri http://nfcpy.org'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\xd1\x01\nU\x03nfcpy.org'
+    assert result.stdout_bytes == b'\xd1\x01\nU\x03nfcpy.org'
 
 
 def test_two_uri_records_created(runner):
     params = 'uri http://nfcpy.org uri tel:123'.split()
     result = runner.invoke(main, params)
     assert result.exit_code == 0
-    assert result.output_bytes == b'\x91\x01\nU\x03nfcpy.orgQ\x01\x04U\x05123'
+    assert result.stdout_bytes == b'\x91\x01\nU\x03nfcpy.orgQ\x01\x04U\x05123'
