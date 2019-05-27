@@ -31,7 +31,4 @@ Data Exchange Format (NDEF) records and messages, released under the
 
 The ``ndeftool`` documentation can be found on `Read the Docs
 <https://ndeftool.readthedocs.io/>`_ and the code on `GitHub
-<https://github.com/nfcpy/ndeftool>`_. It is `continously tested
-<https://travis-ci.org/nfcpy/ndeftool>`_ for Python 2.7 and 3.5 with
-the aim for close to complete `test coverage
-<https://codecov.io/gh/nfcpy/ndeftool>`_.
+<https://github.com/nfcpy/ndeftool>`_.

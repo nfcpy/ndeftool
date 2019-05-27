@@ -2,7 +2,7 @@
 
 # METADATA ####################################################################
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __title__ = "ndeftool"
 __description__ = "Create or inspect NFC Data Exchange Format messages."
