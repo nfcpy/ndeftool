@@ -99,7 +99,7 @@ The :ref:`save` command writes the records to disk or <stdout> for path name
 Records, the first and last record with the message begin and message end flags
 set.
 
-.. command-output:: ndeftool text ONE text TWO text THREE save - | hexdump -C
+.. command-output:: ndeftool text ONE text TWO text THREE save - | xxd -g 1
    :shell:
 
 The :ref:`save` command can be used to write intermediate results, here
@@ -107,7 +107,7 @@ immediately after a text record has been created. Note that by writing to
 <stdout> the result is a sequence of three individual NDEF messages of one
 record each. This would not be a proper NDEF message file.
 
-.. command-output:: ndeftool text ONE save - text TWO save - text THREE save - | hexdump -C
+.. command-output:: ndeftool text ONE save - text TWO save - text THREE save - | xxd -g 1
    :shell:
 
 The :ref:`load` command reads records from disk or <stdin> for path name `-`.
@@ -122,7 +122,7 @@ significant three bits indicates that there is no type or payload associated
 with this record and thus the `TYPE LENGTH` and `PAYLOAD LENGTH` fields must be
 zero.
 
-.. command-output:: ndeftool typename '' | hexdump -C
+.. command-output:: ndeftool typename '' | xxd -g 1
    :shell:
 
 The default decoding of an NDEF message requires correct data format. Data with

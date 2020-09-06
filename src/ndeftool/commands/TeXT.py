@@ -21,7 +21,7 @@ def cmd(message, **kwargs):
 
     \b
     Examples:
-      ndeftool text '' | hexdump -Cv
+      ndeftool text '' | xxd -g 1
       ndeftool text 'Created with the nfcpy ndeftool.' print
       ndeftool text 'first record' text 'second record' print
       ndeftool text -l en 'English' text -l de 'Deutsch' print

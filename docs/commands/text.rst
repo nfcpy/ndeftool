@@ -52,5 +52,5 @@ Create one text record with English text and one record with German text.
 
 Create a text record with UTF-16 encoding.
 
-.. command-output:: ndeftool text --encoding UTF-16 'text encoded in UTF-16' | hexdump -C
+.. command-output:: ndeftool text --encoding UTF-16 'text encoded in UTF-16' | xxd -g 1
    :shell:
