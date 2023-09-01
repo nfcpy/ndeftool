@@ -1,4 +1,4 @@
-include *.txt *.rst LICENSE tox.ini .coveragerc docs/Makefile
+include *.txt *.rst *.ini LICENSE .coveragerc docs/Makefile
 recursive-include src *.py
 recursive-include tests *.py
 recursive-include docs *.ico
