@@ -13,7 +13,7 @@ def runner():
     return click.testing.CliRunner()
 
 
-@pytest.yield_fixture
+@pytest.fixture
 def isolated_runner(runner):
     with runner.isolated_filesystem():
         yield runner
