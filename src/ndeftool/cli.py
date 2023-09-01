@@ -123,7 +123,7 @@ def main(ctx, **kwargs):
     ctx.meta['output-logmsg'] = kwargs['logmsg'] or 'normal'
 
 
-@main.resultcallback()
+@main.result_callback()
 def process_commands(processors, **kwargs):
     message = None
     for processor in processors:
