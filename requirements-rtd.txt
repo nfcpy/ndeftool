@@ -1,4 +1,0 @@
-#
-# Required packages for build on readthedocs.org
-#
-sphinxcontrib-programoutput
