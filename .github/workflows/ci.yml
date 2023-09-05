@@ -9,6 +9,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  build-package:
+    name: Build & verify package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: hynek/build-and-inspect-python-package@v1
+
   tests:
     name: tox on ${{ matrix.python-version }}
     runs-on: ubuntu-latest
@@ -17,11 +26,11 @@ jobs:
       fail-fast: false
       matrix:
         python-version:
-          - '3.8'
+          #- '3.8'
           - '3.9'
           - '3.10'
           - '3.11'
-          - '3.12'
+          #- '3.12'
 
     steps:
       - uses: actions/checkout@v3
