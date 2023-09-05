@@ -2,15 +2,15 @@
 Create, modify and print NDEF Records
 =====================================
 
-.. image:: https://badge.fury.io/py/ndeftool.svg
+.. image:: https://img.shields.io/pypi/v/ndeftool
    :target: https://pypi.python.org/pypi/ndeftool
    :alt: Python Package
 
-.. image:: https://readthedocs.org/projects/ndeftool/badge/?version=latest
-   :target: http://ndeftool.readthedocs.io/en/latest/?badge=latest
-   :alt: Latest Documentation
+.. image:: https://img.shields.io/readthedocs/ndeftool
+   :target: http://ndeftool.readthedocs.io
+   :alt: Documentation
 
-.. image:: https://codecov.io/gh/nfcpy/ndeftool/branch/master/graph/badge.svg
+.. image:: https://img.shields.io/codecov/c/github/nfcpy/ndeftool
    :target: https://codecov.io/gh/nfcpy/ndeftool
    :alt: Code Coverage
 
