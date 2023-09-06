@@ -24,6 +24,7 @@ jobs:
 
   tests:
     name: tox on ${{ matrix.python-version }}
+    needs: build-package
     runs-on: ubuntu-latest
 
     strategy:
