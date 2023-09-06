@@ -1,9 +1,0 @@
-include *.txt *.rst *.ini LICENSE .coveragerc docs/Makefile
-recursive-include src *.py
-recursive-include tests *.py
-recursive-include docs *.ico
-recursive-include docs *.png
-recursive-include docs *.py
-recursive-include docs *.rst
-recursive-include docs *.txt
-prune docs/_build
