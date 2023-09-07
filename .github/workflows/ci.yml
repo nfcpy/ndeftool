@@ -9,8 +9,9 @@ on:
   workflow_dispatch:
 
 env:
-  FORCE_COLOR: "1"
+  FORCE_COLOR: "1" # Make tools pretty.
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PIP_NO_PYTHON_VERSION_WARNING: "1"
 
 jobs:
   build-package:
@@ -26,7 +27,6 @@ jobs:
     name: tox on ${{ matrix.python-version }}
     needs: build-package
     runs-on: ubuntu-latest
-
     strategy:
       fail-fast: false
       matrix:
@@ -38,11 +38,20 @@ jobs:
           - '3.12'
 
     steps:
+      - name: Download pre-built packages
+        uses: actions/download-artifact@v3
+        with:
+          name: Packages
+          path: dist
+      - run: tar xf dist/*.tar.gz --strip-components=1  # needed for config files
+
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           allow-prereleases: true
+          cache: pip
+
       - name: Install dependencies
         run: |
           python -VV
